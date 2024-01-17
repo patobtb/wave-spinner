@@ -1,0 +1,36 @@
+$colors: darkblue mediumblue blue  dodgerblue lightblue;
+$delay: 111ms;
+
+
+.stripes-box {
+  list-style-type: none;
+  font-size: 0;
+  width: 40px;
+  display: flex;
+
+  .stripe {
+    width: 8px;
+    height: 45px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+    animation: colorbars 300ms infinite alternate;
+  }
+  @each $color in $colors{
+    $i: index($colors, $color);
+    
+    .stripe:nth-child(#{$i}){
+      background-color: $color;
+      animation-delay: $i * $delay;
+    }
+  }
+}
+
+@keyframes colorbars {
+  0%{
+    transform: translateY(1px);
+  }
+  100%{
+    transform: translateY(10px);
+  }
+}
+
